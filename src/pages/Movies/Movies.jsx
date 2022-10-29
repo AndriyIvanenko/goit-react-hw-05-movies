@@ -5,33 +5,22 @@ import { SearchForm } from 'components/Form/Form';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getSearchedList } from 'components/requests';
 
-export const Movies = () => {
+const Movies = () => {
   console.log('MOVIES');
 
   const [searchedList, setSearchedList] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
 
-  let searchRequest;
-  const inputChangeHandler = evt => {
-    searchRequest = evt.currentTarget.value;
-  };
-
-  const onSubmitHandler = evt => {
-    evt.preventDefault();
+  const sendSearchRequest = searchRequest => {
     getSearchedList(searchRequest, setSearchedList);
-    console.log(evt.target);
-    // document.getElementsByName('search').reset();
     navigate(`?query=${searchRequest}`);
   };
 
   return (
     <Main>
       {JSON.stringify(params) === '{}' && (
-        <SearchForm
-          submitHandler={onSubmitHandler}
-          inputHandler={inputChangeHandler}
-        />
+        <SearchForm onFormSubmit={sendSearchRequest} />
       )}
       {searchedList.length !== 0 && JSON.stringify(params) === '{}' && (
         <MovieList list={searchedList} />
@@ -40,3 +29,5 @@ export const Movies = () => {
     </Main>
   );
 };
+
+export default Movies;

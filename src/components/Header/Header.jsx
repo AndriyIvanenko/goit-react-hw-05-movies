@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import { StyledNav, StyledNavLink } from './Header.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const Header = () => {
   console.log('HEADER');
@@ -12,7 +14,9 @@ export const Header = () => {
         </StyledNavLink>
         <StyledNavLink to="/movies">Movies</StyledNavLink>
       </StyledNav>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Actor, Img, Li } from './Cast.styled';
 import defaulProfileImg from '../../images/default.profile.png';
 import { getCast } from 'components/requests';
 
-export const Cast = () => {
+const Cast = () => {
   console.log('CAST');
 
   const [cast, setCast] = useState([]);
@@ -39,3 +39,5 @@ export const Cast = () => {
     </ul>
   );
 };
+
+export default Cast;

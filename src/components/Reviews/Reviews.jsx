@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { H4, Li, Review } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   console.log('REVIEWS');
 
   const [reviews, setReviews] = useState([]);
@@ -33,3 +33,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews;

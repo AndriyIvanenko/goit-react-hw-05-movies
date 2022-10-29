@@ -3,7 +3,7 @@ import { Main } from './Home.styled';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getTrendingList } from 'components/requests';
 
-export const Home = () => {
+const Home = () => {
   console.log('HOME');
 
   const [trendingList, setTrendingList] = useState([]);
@@ -22,3 +22,5 @@ export const Home = () => {
     </Main>
   );
 };
+
+export default Home;

@@ -13,7 +13,7 @@ import {
 } from './MovieDetails.styled';
 import { getMovieDetails } from 'components/requests';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   console.log('MOVIE DETAILS');
 
   const [movieDetails, setMovieDetails] = useState({});
@@ -71,3 +71,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;
