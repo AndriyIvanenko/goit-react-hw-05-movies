@@ -14,7 +14,10 @@ const Cast = () => {
     if (cast.length !== 0) {
       return;
     }
-    getCast(movieId, setCast);
+    const controller = new AbortController();
+    getCast(movieId, setCast, controller);
+
+    return () => controller.abort();
   }, [movieId, cast]);
 
   return (

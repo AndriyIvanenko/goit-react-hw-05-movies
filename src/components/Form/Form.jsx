@@ -1,31 +1,37 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Button } from './Form.styled';
 
 export const SearchForm = ({ onFormSubmit }) => {
   console.log('FORM');
 
-  const [input, setInput] = useState();
+  const [searchRequest, setSearchRequest] = useState();
 
   const inputChangeHandler = evt => {
-    setInput(evt.target.value);
+    setSearchRequest(evt.currentTarget.value);
   };
 
   const formSubmitHandler = evt => {
     evt.preventDefault();
-    onFormSubmit(input);
-    setInput('');
+    onFormSubmit(searchRequest);
+    setSearchRequest('');
   };
 
   return (
     <Form onSubmit={formSubmitHandler}>
-      <label htmlFor="search"></label>
+      <label htmlFor="searchRequest"></label>
       <Input
         type="text"
         autoComplete="off"
-        name="search"
+        name="searchRequest"
+        value={searchRequest}
         onChange={inputChangeHandler}
       />
       <Button type="submit">search</Button>
     </Form>
   );
+};
+
+SearchForm.propTypes = {
+  onFormSubmit: PropTypes.func,
 };

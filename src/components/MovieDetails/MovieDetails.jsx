@@ -25,7 +25,10 @@ const MovieDetails = () => {
     if (JSON.stringify(movieDetails) !== '{}') {
       return;
     }
-    getMovieDetails(movieId, setMovieDetails);
+    const controller = new AbortController();
+    getMovieDetails(movieId, setMovieDetails, controller);
+
+    return () => controller.abort();
   }, [movieDetails, movieId]);
 
   function onGoBackClick(evt) {

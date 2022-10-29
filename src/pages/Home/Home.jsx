@@ -12,7 +12,11 @@ const Home = () => {
     if (trendingList.length !== 0) {
       return;
     }
-    getTrendingList(setTrendingList);
+
+    const controller = new AbortController();
+    getTrendingList(setTrendingList, controller);
+
+    return () => controller.abort();
   }, [trendingList.length]);
 
   return (

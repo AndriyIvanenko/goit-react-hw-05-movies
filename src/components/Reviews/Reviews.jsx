@@ -13,7 +13,10 @@ const Reviews = () => {
     if (reviews.length !== 0) {
       return;
     }
-    getReviews(movieId, setReviews);
+    const controller = new AbortController();
+    getReviews(movieId, setReviews, controller);
+
+    return () => controller.abort();
   }, [movieId, reviews]);
 
   return (

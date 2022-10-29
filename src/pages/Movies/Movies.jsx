@@ -4,17 +4,30 @@ import { Main } from './Movies.styled';
 import { SearchForm } from 'components/Form/Form';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getSearchedList } from 'components/requests';
+import { useEffect } from 'react';
 
 const Movies = () => {
-  console.log('MOVIES');
+  console.log('------ MOVIES ------');
 
   const [searchedList, setSearchedList] = useState([]);
+  const [searchRequest, setSearchRequest] = useState('');
   const params = useParams();
   const navigate = useNavigate();
 
-  const sendSearchRequest = searchRequest => {
-    getSearchedList(searchRequest, setSearchedList);
-    navigate(`?query=${searchRequest}`);
+  useEffect(() => {
+    if (searchedList.length !== 0 || searchRequest === '') {
+      return;
+    }
+
+    const controller = new AbortController();
+    getSearchedList(searchRequest, setSearchedList, controller);
+
+    return () => controller.abort();
+  }, [searchRequest, searchedList]);
+
+  const sendSearchRequest = request => {
+    setSearchRequest(request);
+    navigate(`?query=${request}`);
   };
 
   return (
