@@ -5,7 +5,7 @@ import { Form, Input, Button } from './Form.styled';
 export const SearchForm = ({ onFormSubmit }) => {
   console.log('FORM');
 
-  const [searchRequest, setSearchRequest] = useState();
+  const [searchRequest, setSearchRequest] = useState('');
 
   const inputChangeHandler = evt => {
     setSearchRequest(evt.currentTarget.value);

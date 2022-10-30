@@ -8,6 +8,7 @@ const Cast = () => {
   console.log('CAST');
 
   const [cast, setCast] = useState([]);
+
   const movieId = useParams().id;
 
   useEffect(() => {
@@ -21,25 +22,30 @@ const Cast = () => {
   }, [movieId, cast]);
 
   return (
-    <ul>
-      {cast.length !== 0 &&
+    <>
+      {cast.length !== 0 ? (
         cast.map(actor => (
-          <Li key={actor.id}>
-            <Img
-              src={
-                actor.profile_path
-                  ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-                  : defaulProfileImg
-              }
-              alt="profile img"
-            />
-            <div>
-              <Actor>{actor.name}</Actor>
-              <p>Character: {actor.character}</p>
-            </div>
-          </Li>
-        ))}
-    </ul>
+          <ul>
+            <Li key={actor.id}>
+              <Img
+                src={
+                  actor.profile_path
+                    ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                    : defaulProfileImg
+                }
+                alt="profile img"
+              />
+              <div>
+                <Actor>{actor.name}</Actor>
+                <p>Character: {actor.character}</p>
+              </div>
+            </Li>
+          </ul>
+        ))
+      ) : (
+        <p>We don't have cast list for this movie.</p>
+      )}
+    </>
   );
 };
 

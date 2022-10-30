@@ -1,22 +1,15 @@
 import { AddInformation } from 'components/AddInfo/AddInfo';
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import {
-  Button,
-  Details,
-  Genres,
-  H2,
-  H4,
-  Img,
-  Overview,
-  Score,
-} from './MovieDetails.styled';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Button, Details, Genres, H2, H4, Img, Overview, Score } from './MovieDetails.styled';
 import { getMovieDetails } from 'components/requests';
 
 const MovieDetails = () => {
   console.log('MOVIE DETAILS');
 
   const [movieDetails, setMovieDetails] = useState({});
+  const [genreList, setGenreList] = useState([]);
+
   const movieId = useParams().id;
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +19,7 @@ const MovieDetails = () => {
       return;
     }
     const controller = new AbortController();
-    getMovieDetails(movieId, setMovieDetails, controller);
+    getMovieDetails(movieId, setMovieDetails, setGenreList, controller);
 
     return () => controller.abort();
   }, [movieDetails, movieId]);
@@ -44,10 +37,7 @@ const MovieDetails = () => {
       </Button>
 
       <Details>
-        <Img
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-          alt="poster"
-        />
+        <Img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt="poster" />
 
         {JSON.stringify(movieDetails) !== '{}' && (
           <div>
@@ -57,20 +47,20 @@ const MovieDetails = () => {
               {movieDetails.release_date.slice(0, 4)}
               {')'}
             </H2>
-            <Score>
-              User Score: {Math.round(movieDetails.vote_average * 10)}%
-            </Score>
+            <Score>User Score: {Math.round(movieDetails.vote_average * 10)}%</Score>
             <H4>Overview</H4>
             <Overview>{movieDetails.overview}</Overview>
             <H4>Genres:</H4>
             <Genres>
-              {movieDetails.genres.map(genre => genre.name + ', ')}
+              {genreList.join(', ')}
+              {/* {movieDetails.genres.map(genre => genre.name + ', ')} */}
             </Genres>
           </div>
         )}
       </Details>
 
       <AddInformation />
+      <Outlet />
     </>
   );
 };

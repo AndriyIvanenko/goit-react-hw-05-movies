@@ -4,7 +4,7 @@ import { MovieList } from 'components/MovieList/MovieList';
 import { getTrendingList } from 'components/requests';
 
 const Home = () => {
-  console.log('HOME');
+  console.log('------ HOME -------');
 
   const [trendingList, setTrendingList] = useState([]);
 

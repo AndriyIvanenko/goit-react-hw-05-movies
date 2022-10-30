@@ -7,6 +7,7 @@ const Reviews = () => {
   console.log('REVIEWS');
 
   const [reviews, setReviews] = useState([]);
+
   const movieId = useParams().id;
 
   useEffect(() => {

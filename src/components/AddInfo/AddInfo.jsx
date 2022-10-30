@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { AddInfo, Ul, Li, StyledLink } from './AddInfo.styled';
 
 export const AddInformation = () => {
@@ -21,7 +21,6 @@ export const AddInformation = () => {
           </StyledLink>
         </Li>
       </Ul>
-      <Outlet />
     </AddInfo>
   );
 };
