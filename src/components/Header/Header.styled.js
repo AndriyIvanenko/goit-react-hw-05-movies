@@ -11,6 +11,7 @@ export const StyledNav = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
   color: #000;
+  font-size: 24px;
   font-weight: bold;
   text-decoration: none;
   padding-left: 4px;

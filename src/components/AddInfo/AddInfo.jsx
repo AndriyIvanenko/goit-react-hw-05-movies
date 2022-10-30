@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { AddInfo, Ul, Li, StyledLink } from './AddInfo.styled';
+import { AddInfo, Ul, Li, StyledLink, H3 } from './AddInfo.styled';
 
 export const AddInformation = () => {
   console.log('ADD INFO');
@@ -8,7 +8,7 @@ export const AddInformation = () => {
 
   return (
     <AddInfo>
-      <h3>Additional information</h3>
+      <H3>Additional information</H3>
       <Ul>
         <Li>
           <StyledLink to="cast" state={{ from: location.state.from }}>

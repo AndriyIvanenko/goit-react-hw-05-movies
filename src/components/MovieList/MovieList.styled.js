@@ -7,7 +7,7 @@ export const Li = styled.li`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   color: blue;
 

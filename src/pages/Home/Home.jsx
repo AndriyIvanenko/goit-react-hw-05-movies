@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Main } from './Home.styled';
+import { H2, Main } from './Home.styled';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getTrendingList } from 'components/requests';
 
@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <Main>
-      <h2>Trending today</h2>
+      <H2>Trending today</H2>
       <MovieList list={trendingList} />
     </Main>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Actor, Img, Li } from './Cast.styled';
+import { Actor, Character, Img, Li } from './Cast.styled';
 import defaulProfileImg from '../../images/default.profile.png';
 import { getCast } from 'components/requests';
 
@@ -37,7 +37,7 @@ const Cast = () => {
               />
               <div>
                 <Actor>{actor.name}</Actor>
-                <p>Character: {actor.character}</p>
+                <Character>Character: {actor.character}</Character>
               </div>
             </Li>
           </ul>

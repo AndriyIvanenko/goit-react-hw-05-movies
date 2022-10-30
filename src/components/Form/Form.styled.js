@@ -9,6 +9,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   border: none;
+  font-size: 16px;
 
   &:focus {
     outline: none;
@@ -18,7 +19,9 @@ export const Input = styled.input`
 export const Button = styled.button`
   border: none;
   background-color: #dfdfdf;
-  height: 26px;
+  height: 28px;
+
+  font-size: 18px;
 
   &:hover {
     cursor: pointer;
