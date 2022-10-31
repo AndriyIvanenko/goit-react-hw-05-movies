@@ -6,7 +6,7 @@ import { MovieList } from 'components/MovieList/MovieList';
 import { getSearchedList } from 'components/requests';
 
 const Movies = () => {
-  console.log('------ MOVIES ------');
+  //   console.log('------ MOVIES ------');
 
   const [searchedList, setSearchedList] = useState([]);
   const [searchRequest, setSearchRequest] = useState('');
@@ -37,7 +37,7 @@ const Movies = () => {
     <Main>
       {JSON.stringify(params) === '{}' && <SearchForm onFormSubmit={sendSearchRequest} />}
       {searchedList.length !== 0 && JSON.stringify(params) === '{}' && (
-        <MovieList list={searchedList} />
+        <MovieList movieList={searchedList} />
       )}
       <Outlet />
     </Main>

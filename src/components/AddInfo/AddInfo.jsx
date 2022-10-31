@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { AddInfo, Ul, Li, StyledLink, H3 } from './AddInfo.styled';
 
 export const AddInformation = () => {
-  console.log('ADD INFO');
+  //   console.log('ADD INFO');
 
   const location = useLocation();
 

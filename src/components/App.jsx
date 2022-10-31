@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './Header/Header';
+import { NotFound } from './NofFound/NotFound';
 import { lazy } from 'react';
 
 const Home = lazy(() => import('../pages/Home/Home'));
@@ -22,6 +23,7 @@ export const App = () => {
             </Route>
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

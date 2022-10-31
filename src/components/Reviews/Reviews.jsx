@@ -4,21 +4,18 @@ import { useParams } from 'react-router-dom';
 import { H4, Li, Review } from './Reviews.styled';
 
 const Reviews = () => {
-  console.log('REVIEWS');
+  //   console.log('REVIEWS');
 
   const [reviews, setReviews] = useState([]);
 
   const movieId = useParams().id;
 
   useEffect(() => {
-    if (reviews.length !== 0) {
-      return;
-    }
     const controller = new AbortController();
     getReviews(movieId, setReviews, controller);
 
     return () => controller.abort();
-  }, [movieId, reviews]);
+  }, [movieId]);
 
   return (
     <div>

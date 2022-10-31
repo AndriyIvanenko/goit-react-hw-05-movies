@@ -4,25 +4,21 @@ import { MovieList } from 'components/MovieList/MovieList';
 import { getTrendingList } from 'components/requests';
 
 const Home = () => {
-  console.log('------ HOME -------');
+  // console.log('------ HOME -------');
 
   const [trendingList, setTrendingList] = useState([]);
 
   useEffect(() => {
-    if (trendingList.length !== 0) {
-      return;
-    }
-
     const controller = new AbortController();
     getTrendingList(setTrendingList, controller);
 
     return () => controller.abort();
-  }, [trendingList.length]);
+  }, []);
 
   return (
     <Main>
       <H2>Trending today</H2>
-      <MovieList list={trendingList} />
+      <MovieList movieList={trendingList} />
     </Main>
   );
 };

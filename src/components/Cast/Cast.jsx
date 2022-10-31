@@ -5,21 +5,18 @@ import defaulProfileImg from '../../images/default.profile.png';
 import { getCast } from 'components/requests';
 
 const Cast = () => {
-  console.log('CAST');
+  //   console.log('CAST');
 
   const [cast, setCast] = useState([]);
 
   const movieId = useParams().id;
 
   useEffect(() => {
-    if (cast.length !== 0) {
-      return;
-    }
     const controller = new AbortController();
     getCast(movieId, setCast, controller);
 
     return () => controller.abort();
-  }, [movieId, cast]);
+  }, [movieId]);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { StyledNav, StyledNavLink } from './Header.styled';
 import { Loader } from 'components/Loader/Loader';
 
 export const Header = () => {
-  console.log('------- HEADER -------');
+  // console.log('------- HEADER -------');
 
   return (
     <>

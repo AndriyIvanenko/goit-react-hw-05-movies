@@ -2,18 +2,18 @@ import { Li, StyledLink } from './MovieList.styled';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-export const MovieList = ({ list }) => {
-  console.log('MOVIE LIST');
+export const MovieList = ({ movieList }) => {
+  // console.log('MOVIE LIST');
 
   const location = useLocation();
 
   return (
     <ul>
-      {list.map(item => (
-        <Li key={item.id}>
+      {movieList.map(movie => (
+        <Li key={movie.id}>
           {
-            <StyledLink to={`/movies/${item.id}`} state={{ from: location }}>
-              {item.title || item.name}
+            <StyledLink to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
             </StyledLink>
           }
         </Li>
@@ -23,5 +23,5 @@ export const MovieList = ({ list }) => {
 };
 
 MovieList.propTypes = {
-  trendingList: PropTypes.arrayOf(PropTypes.object),
+  movieList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

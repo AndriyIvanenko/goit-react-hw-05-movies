@@ -5,7 +5,7 @@ import { Button, Details, Genres, H2, H4, Img, Overview, Score } from './MovieDe
 import { getMovieDetails } from 'components/requests';
 
 const MovieDetails = () => {
-  console.log('MOVIE DETAILS');
+  //   console.log('MOVIE DETAILS');
 
   const [movieDetails, setMovieDetails] = useState({});
   const [genreList, setGenreList] = useState([]);
@@ -15,14 +15,11 @@ const MovieDetails = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (JSON.stringify(movieDetails) !== '{}') {
-      return;
-    }
     const controller = new AbortController();
     getMovieDetails(movieId, setMovieDetails, setGenreList, controller);
 
     return () => controller.abort();
-  }, [movieDetails, movieId]);
+  }, [movieId]);
 
   function onGoBackClick(evt) {
     if (evt.target.type === 'button') {
@@ -53,7 +50,11 @@ const MovieDetails = () => {
             <H4>Genres:</H4>
             <Genres>
               {genreList.join(', ')}
-              {/* {movieDetails.genres.map(genre => genre.name + ', ')} */}
+              {/* {(function () {
+                let genreList = [];
+                movieDetails.genres.map(genre => genreList.push(genre.name));
+                return genreList;
+              })().join(', ')} */}
             </Genres>
           </div>
         )}
