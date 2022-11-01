@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Main } from './Movies.styled';
 import { SearchForm } from 'components/Form/Form';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getSearchedList } from 'components/requests';
+import { Loader } from 'components/Loader/Loader';
 
 const Movies = () => {
   //   console.log('------ MOVIES ------');
-
   const [searchedList, setSearchedList] = useState([]);
   const [searchRequest, setSearchRequest] = useState('');
-
   const params = useParams();
   const navigate = useNavigate();
 
@@ -22,10 +21,7 @@ const Movies = () => {
     const controller = new AbortController();
     getSearchedList(searchRequest, setSearchedList, controller);
 
-    return () => {
-      controller.abort();
-      //   setSearchRequest('');
-    };
+    return () => controller.abort();
   }, [searchRequest]);
 
   const sendSearchRequest = request => {
@@ -39,7 +35,9 @@ const Movies = () => {
       {searchedList.length !== 0 && JSON.stringify(params) === '{}' && (
         <MovieList movieList={searchedList} />
       )}
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Main>
   );
 };

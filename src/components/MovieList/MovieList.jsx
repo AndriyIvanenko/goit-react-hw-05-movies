@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 
 export const MovieList = ({ movieList }) => {
   // console.log('MOVIE LIST');
-
   const location = useLocation();
 
   return (

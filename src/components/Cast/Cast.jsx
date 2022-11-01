@@ -6,9 +6,7 @@ import { getCast } from 'components/requests';
 
 const Cast = () => {
   //   console.log('CAST');
-
   const [cast, setCast] = useState([]);
-
   const movieId = useParams().id;
 
   useEffect(() => {
@@ -21,8 +19,8 @@ const Cast = () => {
   return (
     <>
       {cast.length !== 0 ? (
-        cast.map(actor => (
-          <ul>
+        <ul>
+          {cast.map(actor => (
             <Li key={actor.id}>
               <Img
                 src={
@@ -37,8 +35,8 @@ const Cast = () => {
                 <Character>Character: {actor.character}</Character>
               </div>
             </Li>
-          </ul>
-        ))
+          ))}
+        </ul>
       ) : (
         <p>We don't have cast list for this movie.</p>
       )}

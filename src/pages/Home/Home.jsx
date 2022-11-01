@@ -5,7 +5,6 @@ import { getTrendingList } from 'components/requests';
 
 const Home = () => {
   // console.log('------ HOME -------');
-
   const [trendingList, setTrendingList] = useState([]);
 
   useEffect(() => {

@@ -5,7 +5,6 @@ import { Loader } from 'components/Loader/Loader';
 
 export const Header = () => {
   // console.log('------- HEADER -------');
-
   return (
     <>
       <StyledNav>

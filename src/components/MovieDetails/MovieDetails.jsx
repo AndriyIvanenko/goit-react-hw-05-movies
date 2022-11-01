@@ -1,12 +1,12 @@
 import { AddInformation } from 'components/AddInfo/AddInfo';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button, Details, Genres, H2, H4, Img, Overview, Score } from './MovieDetails.styled';
 import { getMovieDetails } from 'components/requests';
+import { Loader } from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   //   console.log('MOVIE DETAILS');
-
   const [movieDetails, setMovieDetails] = useState({});
   const [genreList, setGenreList] = useState([]);
 
@@ -61,7 +61,9 @@ const MovieDetails = () => {
       </Details>
 
       <AddInformation />
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

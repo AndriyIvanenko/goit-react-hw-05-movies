@@ -5,9 +5,7 @@ import { H4, Li, Review } from './Reviews.styled';
 
 const Reviews = () => {
   //   console.log('REVIEWS');
-
   const [reviews, setReviews] = useState([]);
-
   const movieId = useParams().id;
 
   useEffect(() => {
@@ -20,14 +18,14 @@ const Reviews = () => {
   return (
     <div>
       {reviews.length !== 0 ? (
-        reviews.map(review => (
-          <ul>
+        <ul>
+          {reviews.map(review => (
             <Li key={review.id}>
               <H4>{review.author}</H4>
               <Review>{review.content}</Review>
             </Li>
-          </ul>
-        ))
+          ))}
+        </ul>
       ) : (
         <p>We don't have any reviews for this movie.</p>
       )}

@@ -3,7 +3,6 @@ import { Form, Input, Button } from './Form.styled';
 
 export const SearchForm = ({ onFormSubmit }) => {
   //   console.log('FORM');
-
   const formSubmitHandler = evt => {
     evt.preventDefault();
     const requestForm = evt.currentTarget;
